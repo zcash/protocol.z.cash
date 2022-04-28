@@ -1,0 +1,30 @@
+{% extends "components/layout.html" %}
+
+{% block title %}The Zcash Protocol{% endblock %}
+
+{% block main %}
+<div class="uk-section uk-section-primary">
+    <div id="content" class="uk-container">
+        <h1 class="uk-heading-line uk-text-center"><span>The Zcash Protocol</span></h1>
+    </div>
+</div>
+<div class="uk-section uk-section-default">
+    <div id="content" class="uk-container">
+        <h3>Protocol rule: <code class="uk-text-large">{{ identifier }}</code></h3>
+        <ul class="uk-list uk-list-disc">
+            <li>{% if spec_source.is_empty() %}Specification location unknown.{% else %}<a
+                    href="{{ spec_source }}">Specification</a>{% endif %}</li>
+            <li><a href="https://github.com/zcash/zcash/search?q={{ identifier }}">
+                    Search <code>zcashd</code> source.
+                </a></li>
+            <li><a href="https://github.com/ZcashFoundation/zebra/search?q={{ identifier }}">
+                    Search <code>zebrad</code> source.
+                </a></li>
+        </ul>
+        {% if partial %}
+        <p>Note that the source code location you came from only partially implemented this protocol rule. Use the
+            search links above to find all occurrences.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

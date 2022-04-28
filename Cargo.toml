@@ -9,3 +9,18 @@ edition = "2021"
 publish = false
 
 [dependencies]
+# Webserver
+axum = "0.5"
+serde = "1"
+tokio = { version = "1.0", features = ["full"] }
+tower-http = { version = "0.3", features = ["trace"] }
+tracing = "0.1"
+tracing-subscriber = { version="0.3", features = ["env-filter"] }
+
+# Templates
+askama = { version = "0.11", features = ["with-axum"] }
+askama_axum = "0.1"
+
+[patch.crates-io]
+askama = { git = "https://github.com/djc/askama", rev = "c3196916710ad26fe5b3429bb1688060108b2f8b" }
+askama_axum = { git = "https://github.com/djc/askama", rev = "c3196916710ad26fe5b3429bb1688060108b2f8b" }

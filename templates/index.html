@@ -1,0 +1,25 @@
+{% extends "components/layout.html" %}
+
+{% block title %}The Zcash Protocol{% endblock %}
+
+{% block main %}
+<div class="uk-section uk-section-primary">
+    <div id="content" class="uk-container">
+        <h1 class="uk-heading-line uk-text-center"><span>The Zcash Protocol</span></h1>
+    </div>
+</div>
+<div class="uk-section uk-section-default">
+    <div id="content" class="uk-container">
+        <p>This website serves as a router for Zcash protocol identifiers: static strings that refer to a specific part
+            of some Zcash protocol specification or consensus rule, such as <a
+                href="/TCR:bad-tx-version-group-id"><code>TCR:bad-tx-version-group-id</code></a>. This website acts as a
+            stable URL for these identifiers, and generates links pointing to their canonical specification, as well as
+            search URLs for the <code>zcashd</code> and <code>zebrad</code> codebases.</p>
+        <p>This website is aware of the following specification locations:</p>
+        <ul class="uk-list uk-list-disc">
+            <li><a href="https://zips.z.cash/protocol/protocol.pdf">The Zcash Protocol Specification</a></li>
+            <li><a href="https://zips.z.cash/">Zcash Improvement Proposals (ZIPs)</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
