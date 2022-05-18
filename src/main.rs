@@ -27,7 +27,7 @@ async fn main() {
         .layer(TraceLayer::new_for_http());
 
     // IPv6 + IPv6 any addr
-    let addr = ([0, 0, 0, 0, 0, 0, 0, 0], 3000).into();
+    let addr = ([0, 0, 0, 0, 0, 0, 0, 0], 8080).into();
     tracing::debug!("Listening on {}", addr);
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
