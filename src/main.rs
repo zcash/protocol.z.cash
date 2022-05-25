@@ -5,6 +5,7 @@ use axum::{
     Router,
 };
 use serde::Deserialize;
+use tower::layer::layer_fn;
 use tower_http::trace::TraceLayer;
 
 mod spec;
@@ -24,6 +25,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(index))
         .route("/:identifier", get(identifier_page))
+        .layer(layer_fn(util::RedirectDomain::new))
         .layer(TraceLayer::new_for_http());
 
     // IPv6 + IPv6 any addr
