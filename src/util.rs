@@ -46,7 +46,7 @@ where
     }
 
     fn call(&mut self, req: Request<ReqBody>) -> Self::Future {
-        if req.uri().host() == Some("p.z.cash") {
+        if req.headers().get(header::HOST) == Some(&HeaderValue::from_static("p.z.cash")) {
             let location = Uri::builder()
                 .scheme("https")
                 .authority("protocol.z.cash")
