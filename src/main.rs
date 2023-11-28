@@ -1,3 +1,5 @@
+use std::net::Ipv6Addr;
+
 use askama::Template;
 use axum::{
     extract::{Path, Query},
@@ -5,6 +7,7 @@ use axum::{
     Router,
 };
 use serde::Deserialize;
+use tokio::net::TcpListener;
 use tower::layer::layer_fn;
 use tower_http::trace::TraceLayer;
 
@@ -29,10 +32,11 @@ async fn main() {
         .layer(TraceLayer::new_for_http());
 
     // IPv6 + IPv6 any addr
-    let addr = ([0, 0, 0, 0, 0, 0, 0, 0], 8080).into();
-    tracing::debug!("Listening on {}", addr);
-    axum::Server::bind(&addr)
-        .serve(app.into_make_service())
+    let host = Ipv6Addr::UNSPECIFIED;
+    let port = 8080;
+    tracing::debug!("Listening on {}:{}", host, port);
+    let listener = TcpListener::bind((host, port)).await.unwrap();
+    axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
 }
