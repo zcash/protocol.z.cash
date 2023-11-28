@@ -10,8 +10,8 @@ publish = false
 
 [dependencies]
 # Webserver
-axum = "0.5"
-serde = "1"
+axum = "0.6"
+serde = { version = "1", features = ["derive"] }
 tokio = { version = "1.0", features = ["full"] }
 tower-http = { version = "0.3", features = ["trace"] }
 tracing = "0.1"
@@ -22,9 +22,5 @@ pin-project-lite = "0.2"
 tower = "0.4"
 
 # Templates
-askama = { version = "0.11", features = ["with-axum"] }
-askama_axum = "0.1"
-
-[patch.crates-io]
-askama = { git = "https://github.com/djc/askama", rev = "c3196916710ad26fe5b3429bb1688060108b2f8b" }
-askama_axum = { git = "https://github.com/djc/askama", rev = "c3196916710ad26fe5b3429bb1688060108b2f8b" }
+askama = { version = "0.12", features = ["with-axum"] }
+askama_axum = "0.3"
