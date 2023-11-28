@@ -16,6 +16,8 @@ mod util;
 
 #[tokio::main]
 async fn main() {
+    println!("Printing something as early as possible so fly.io sees it.");
+
     // Filter traces based on the RUST_LOG env var, or, if it's not set,
     // default to show INFO-level details.
     let filter = std::env::var("RUST_LOG").unwrap_or_else(|_| {
